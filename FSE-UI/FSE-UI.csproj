@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\components\utilities\" />
     <Folder Include="ClientApp\src\components\project\" />
+    <Folder Include="ClientApp\src\components\multitask\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
