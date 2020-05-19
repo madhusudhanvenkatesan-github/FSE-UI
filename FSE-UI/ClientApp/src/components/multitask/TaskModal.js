@@ -4,13 +4,12 @@ import ReactBootstrapSlider from 'react-bootstrap-slider';
 import BootstrapSlider from 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { PROJECT_SERVICE_URL } from '../utilities';
 import UserSearchModal from '../user/UserSearchModal';
 import ProjectSearchModal from '../project/ProjectSearchModel';
 import TaskSearchModal from './SearchModal';
-import { PROJECT_SERVICE_URL } from '../utilities';
-
-export class AddTask extends decodeURIComponent {
-    static displayName = AddTask.name;
+export class ModTask extends Component {
+    static displayName = ModTask.name;
     state = {
         projectId: '',
         taskId: '',
@@ -23,10 +22,23 @@ export class AddTask extends decodeURIComponent {
         endDate: null,
         taskOwnerId: '',
         taskOwnerName: '',
-        tskItems: [],
         IsSetDates: false
     }
-    componentDidMount() { }
+
+
+    componentDidMount() {
+        var item = this.props.onGetParam();
+        if (item != null) {
+
+            this.setState({
+                projectId: item.projectId, taskId: item.taskId, taskDescription: item.taskDescription,
+                parentTaskId: item.parentTaskId, parentDescription: item.parentDescription, priority: item.priority,
+                status: item.status, startDate: new Date(item.startDate), endDate: new Date(item.endDate),
+                taskOwnerId: item.taskOwnerId, taskOwnerName: item.taskOwnerName
+            });
+
+        }
+    }
     handleCheckboxChange = e => {
         if (e.target.checked) {
             var edate = new Date();
@@ -46,6 +58,7 @@ export class AddTask extends decodeURIComponent {
         }
     }
     sliderChange = e => {
+        // console.log("changeValue triggered");
         this.setState({ priority: e.target.value });
     };
     onStartDateChange = paramDate => {
@@ -54,10 +67,29 @@ export class AddTask extends decodeURIComponent {
     onEndDateChange = paramDate => {
         this.setState({ endDate: paramDate });
     }
-    submitNew = e => {
+    onTaskOwnerSelect = (usrId, empId) => {
+        this.setState({ taskOwnerId: usrId });
+    }
+    onProjectSelect = (prjId, prjNm) => {
+        this.setState({ projectId: prjId });
+    }
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    onPrjParam = () => {
+        return this.state.projectId;
+    }
+    onParentTaskSelect = (tskId, tskNm) => {
+        this.state.setState({ parentTaskId: tskId, parentDescription: tskNm });
+    }
+    submitEdit = e => {
         e.preventDefault();
         if (this.state.projectId === '') {
             alert("Project id is empty");
+            return;
+        }
+        if (this.state.taskId === '') {
+            alert("Task id is empty");
             return;
         }
         var startDateStr = '';
@@ -94,18 +126,19 @@ export class AddTask extends decodeURIComponent {
                 endDateStr = endDateStr + "-" + datePart.toString();
 
         }
-        fetch(`${PRJCT_SERVICE_URL}/AddTask`, {
-            method: 'post',
+        fetch(`${PROJECT_SERVICE_URL}/EditTask`, {
+            method: 'put',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 projectId: this.state.projectId,
+                taskId: this.state.taskId,
+                priority: this.state.priority,
+                parentTaskId: this.state.parentTaskId,
                 taskDescription: this.state.taskDescription,
                 startDate: startDateStr,
                 endDate: endDateStr,
-                priority: this.state.priority,
-                parentTaskId: this.state.parentTaskId,
                 taskOwnerId: this.state.taskOwnerId
             })
 
@@ -113,57 +146,20 @@ export class AddTask extends decodeURIComponent {
             .then(response => {
                 console.log("*****Get Any criteria*******");
                 console.log(response.status);
-                if (response.status == 201)
+                if (response.status == 202)
                     alert("Task successfully created");
                 console.log("******Get Any criteria******");
-                return response.json();
-                // this.getProject();
-            })
-            .then(jsn => {
-                console.log(jsn);
             })
             .catch(err => {
                 console.log(err);
                 alert(err);
             });
     }
-    onTaskOwnerSelect = (usrId, empId) => {
-        this.setState({ taskOwnerId: usrId });
-    }
-    onProjectSelect = (prjId, prjNm) => {
-        this.setState({ projectId: prjId });
-    }
-    onChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-    onPrjParam = () => {
-        return this.state.projectId;
-    }
-    onParentTaskSelect = (tskId, tskNm) => {
-        this.setState({ parentTaskId: tskId, parentDescription: tskNm });
-    }
-    onClearForm = () => {
-        this.setState({
-            projectId: '',
-            taskId: '',
-            taskDescription: '',
-            parentTaskId: '',
-            parentDescription: '',
-            priority: 0,
-            status: 0,
-            startDate: null,
-            endDate: null,
-            taskOwnerId: '',
-            taskOwnerName: '',
-            IsSetDates: false
-
-        });
-    }
-
     render() {
+
         return <Container>
             <Row>
-                <Form onSubmit={this.submitNew}>
+                <Form onSubmit={this.submitEdit}>
                     <FormGroup>
                         <Row>
                             <Col style={{ minWidth: '125px' }}>
@@ -176,7 +172,7 @@ export class AddTask extends decodeURIComponent {
 
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                                <ProjectSearchModal onSelect={this.onProjectSelect} />
+
                             </Col>
                             <Col />
                         </Row>
@@ -200,12 +196,15 @@ export class AddTask extends decodeURIComponent {
                             <Col style={{
                                 minWidth: '200px'
                             }}>
+
                                 <Input name="IsSetDates"
                                     type="checkbox"
                                     value={this.state.IsSetDates}
                                     onChange={this.handleCheckboxChange}
 
                                 /><Label>Set start and end Dates</Label>
+
+
                             </Col>
                             <Col />
                             <Col />
@@ -303,11 +302,12 @@ export class AddTask extends decodeURIComponent {
                             <Col>
                                 <Button
                                     color="secondary"
-                                    style={{ minWidth: "200px" }}>Add</Button>
+                                    style={{ minWidth: "200px" }}>Modify</Button>
                             </Col>
                             <Col ><Button
                                 color="secondary"
-                                style={{ minWidth: "200px" }} onClick={() => this.onClearForm()}>Clear</Button>
+                                style={{ minWidth: "200px" }}
+                                onClick={() => this.props.onToggle(null)}>Return</Button>
                             </Col>
                             <Col />
                         </Row>
@@ -317,4 +317,4 @@ export class AddTask extends decodeURIComponent {
         </Container>;
     }
 }
-export default AddTask;
+export default ModTask;
