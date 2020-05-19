@@ -20,7 +20,7 @@ export class MaintainenceTask extends Component {
     render() {
 
         return <div>
-            {this.state.showMode ? <TaskMod onToggle={this.toggle} onGetParam={this.getTaskItemForMod} /> : <TaskList onToggle={this.toggle} />}
+            {this.state.showMode ? <TaskModal onToggle={this.toggle} onGetParam={this.getTaskItemForMod} /> : <ListTask onToggle={this.toggle} />}
 
         </div>
     }
