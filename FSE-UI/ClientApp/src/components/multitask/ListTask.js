@@ -2,9 +2,9 @@
 import { Button, Form, FormGroup, Input, Label, Container, Row, Col } from 'reactstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { PROJECT_SERVICE_URL } from '../utilities';
+import SearchModel from '../project/SearchModel';
+import '../../custom.css';
 
-
-import '../style.css';
 export class ListTask extends Component {
     static displayName = ListTask.name;
     state = {
@@ -114,7 +114,7 @@ export class ListTask extends Component {
                         disabled={true} />
                 </Col>
                 <Col style={{ minWidth: '200px' }}>
-                    <ProjectSearchModal onSelect={this.onProjectSelect} />
+                    <SearchModel onSelect={this.onProjectSelect} />
                 </Col>
                 <Col style={{ minWidth: '20px' }}>
                     <Label>Sort:</Label>
