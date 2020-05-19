@@ -1,6 +1,6 @@
 ﻿import React, { Component, Fragment } from 'react';
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
-
+import SearchTask from './SearchTask';
 
 export class SearchModal extends Component {
     static displayName = SearchModal.name;
@@ -23,9 +23,9 @@ export class SearchModal extends Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} style={{ minWidth: '500px' }}>
                 <ModalHeader toggle={this.toggle}>Task Search</ModalHeader>
                 <ModalBody>
-                    <TaskSearch onSelect={this.props.onSelect} onToggle={this.toggle}
+                    <SearchTask onSelect={this.props.onSelect} onToggle={this.toggle}
                         onGetParam={this.props.onGetParam}>
-                    </TaskSearch>
+                    </SearchTask>
                 </ModalBody>
             </Modal>
         </Fragment>
