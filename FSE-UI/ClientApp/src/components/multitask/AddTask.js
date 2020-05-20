@@ -1,12 +1,11 @@
 ﻿import React, { Component, Fragment } from 'react';
 import { Button, Form, FormGroup, Input, Label, Container, Row, Col } from 'reactstrap';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
-import BootstrapSlider from 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import UserSearchModal from '../user/UserSearchModal';
-import ProjectSearchModal from '../project/ProjectSearchModel';
-import TaskSearchModal from './SearchModal';
+import SearchUserModal from '../user/SearchUserModal';
+import SearchProjectModal from '../project/SearchProjectModal';
+import SearchMultitaskModal from './SearchMultitaskModal';
 import { PROJECT_SERVICE_URL } from '../utilities';
 
 export class AddTask extends decodeURIComponent {
@@ -94,7 +93,7 @@ export class AddTask extends decodeURIComponent {
                 endDateStr = endDateStr + "-" + datePart.toString();
 
         }
-        fetch(`${PRJCT_SERVICE_URL}/AddTask`, {
+        fetch(`${PROJECT_SERVICE_URL}/AddTask`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -176,7 +175,7 @@ export class AddTask extends decodeURIComponent {
 
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                                <ProjectSearchModal onSelect={this.onProjectSelect} />
+                              /*  <SearchProjectModal onSelect={this.onProjectSelect} /> */
                             </Col>
                             <Col />
                         </Row>
@@ -243,7 +242,7 @@ export class AddTask extends decodeURIComponent {
                                     value={this.state.parentTaskId} disabled={true} />
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                                <TaskSearchModal onSelect={this.onParentTaskSelect}
+                                <SearchMultitaskModal onSelect={this.onParentTaskSelect}
                                     onGetParam={this.onPrjParam} />
                             </Col>
                             <Col />
@@ -291,7 +290,7 @@ export class AddTask extends decodeURIComponent {
                                     value={this.state.taskOwnerId} disabled={true} />
                             </Col>
                             <Col style={{ minWidth: '300px' }} >
-                                <UserSearchModal onSelect={this.onTaskOwnerSelect} />
+                                <SearchUserModal onSelect={this.onTaskOwnerSelect} />
                             </Col>
                             <Col />
                         </Row>
