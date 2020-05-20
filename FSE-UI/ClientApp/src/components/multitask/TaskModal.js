@@ -1,13 +1,12 @@
 ﻿import React, { Component, Fragment } from 'react';
 import { Button, Form, FormGroup, Input, Label, Container, Row, Col } from 'reactstrap';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
-import BootstrapSlider from 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { PROJECT_SERVICE_URL } from '../utilities';
-import UserSearchModal from '../user/UserSearchModal';
-import ProjectSearchModal from '../project/ProjectSearchModel';
-import TaskSearchModal from './SearchModal';
+import SearchUserModal from '../user/SearchUserModal';
+import SearchProjectModal from '../project/SearchProjectModal';
+import SearchMultitaskModal from './SearchMultitaskModal';
 export class ModTask extends Component {
     static displayName = ModTask.name;
     state = {
@@ -242,7 +241,7 @@ export class ModTask extends Component {
                                     value={this.state.parentTaskId} disabled={true} />
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                                <TaskSearchModal onSelect={this.onParentTaskSelect}
+                                <SearchMultitaskModal onSelect={this.onParentTaskSelect}
                                     onGetParam={this.onPrjParam} />
                             </Col>
                             <Col />
@@ -290,7 +289,7 @@ export class ModTask extends Component {
                                     value={this.state.taskOwnerId} disabled={true} />
                             </Col>
                             <Col style={{ minWidth: '300px' }} >
-                                <UserSearchModal onSelect={this.onTaskOwnerSelect} />
+                                <SearchUserModal onSelect={this.onTaskOwnerSelect} />
                             </Col>
                             <Col />
                         </Row>
