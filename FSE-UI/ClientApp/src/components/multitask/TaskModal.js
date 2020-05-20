@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { PROJECT_SERVICE_URL } from '../utilities';
 import SearchUserModal from '../user/SearchUserModal';
-import SearchProjectModal from '../project/SearchProjectModal';
 import SearchMultitaskModal from './SearchMultitaskModal';
 export class ModTask extends Component {
     static displayName = ModTask.name;
@@ -145,7 +144,7 @@ export class ModTask extends Component {
             .then(response => {
                 console.log("*****Get Any criteria*******");
                 console.log(response.status);
-                if (response.status == 202)
+                if (response.status === 202)
                     alert("Task successfully created");
                 console.log("******Get Any criteria******");
             })

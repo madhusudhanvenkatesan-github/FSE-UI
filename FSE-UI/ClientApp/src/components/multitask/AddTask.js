@@ -8,7 +8,7 @@ import SearchProjectModal from '../project/SearchProjectModal';
 import SearchMultitaskModal from './SearchMultitaskModal';
 import { PROJECT_SERVICE_URL } from '../utilities';
 
-export class AddTask extends decodeURIComponent {
+export class AddTask extends Component {
     static displayName = AddTask.name;
     state = {
         projectId: '',
@@ -112,7 +112,7 @@ export class AddTask extends decodeURIComponent {
             .then(response => {
                 console.log("*****Get Any criteria*******");
                 console.log(response.status);
-                if (response.status == 201)
+                if (response.status === 201)
                     alert("Task successfully created");
                 console.log("******Get Any criteria******");
                 return response.json();
@@ -175,7 +175,7 @@ export class AddTask extends decodeURIComponent {
 
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                              /*  <SearchProjectModal onSelect={this.onProjectSelect} /> */
+                                <SearchProjectModal onSelect={this.onProjectSelect} />
                             </Col>
                             <Col />
                         </Row>
