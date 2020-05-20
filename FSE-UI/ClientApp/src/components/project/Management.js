@@ -1,13 +1,12 @@
 ﻿import React, { Component } from 'react'
 import { Button, Form, FormGroup, Input, Label, Container, Row, Col } from 'reactstrap';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
-import BootstrapSlider from 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import DatePicker from "react-datepicker";
-import { PROJECT_SERVICE_URL } from '../../utilities';
-import Checkbox from '../common/checkbox';
+import { PROJECT_SERVICE_URL } from '../utilities';
+import Checkbox from '../utilities';
 import "react-datepicker/dist/react-datepicker.css";
-import UserSearchModal from '../user/UserSearchModal';
+import SearchUserModal from '../user/SearchUserModal';
 
 export class Management extends Component {
     static displayName = Management.name;
@@ -169,7 +168,7 @@ export class Management extends Component {
     }
     submitEdit = e => {
         e.preventDefault();
-        fetch(`${PRJCT_SERVICE_URL}/EditProject`, {
+        fetch(`${PROJECT_SERVICE_URL}/EditProject`, {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'
@@ -199,7 +198,7 @@ export class Management extends Component {
     suspend = projId => {
         let confirmClose = window.confirm("Are you sure you want to suspend project");
         if (confirmClose) {
-            fetch(`${PRJCT_SERVICE_URL}/SuspendProject?projId=${projId}`, {
+            fetch(`${PROJECT_SERVICE_URL}/SuspendProject?projId=${projId}`, {
                 method: 'put'
             })
                 .then(response => {
@@ -397,7 +396,7 @@ export class Management extends Component {
                                     disabled={true} />
                             </Col>
                             <Col>
-                                <UserSearchModal onSelect={this.onPMSelect} />
+                                <SearchUserModal onSelect={this.onPMSelect} />
                             </Col>
                         </Row>
                     </FormGroup>
