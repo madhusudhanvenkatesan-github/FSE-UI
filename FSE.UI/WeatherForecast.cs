@@ -1,6 +1,6 @@
 using System;
 
-namespace FSEPMUI
+namespace FSE.UI
 {
     public class WeatherForecast
     {

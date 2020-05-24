@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace FSEPMUI.Controllers
+namespace FSE.UI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
