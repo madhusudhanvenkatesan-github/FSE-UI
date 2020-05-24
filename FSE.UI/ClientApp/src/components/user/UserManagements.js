@@ -304,7 +304,6 @@ export class UserManagements extends Component {
                                 <Col>
                                     <br />
 
-
                                     <Button
                                         color="primary"
                                         style={{ minWidth: "50px", alignSelf: 'down', top: '95%' }}
@@ -318,6 +317,7 @@ export class UserManagements extends Component {
                     </Form>
                 </Col>
             </Row>
+            <Row> </Row>
             <Row>
                 <Col>
                     <Label>Sort:</Label>&nbsp;&nbsp;<Button color="primary"
@@ -326,9 +326,10 @@ export class UserManagements extends Component {
                                 style={{ minWidth: "50px" }} onClick={() => this.sortGrid('ln')}>Last Name</Button>
                 </Col>
 
-            </Row><Row>
+            </Row> <Row>
 
                 <Col>
+                    <Row> </Row>
                     <ListGroup>
                         {
                             ((!gridItems) || (gridItems.length <= 0)) ?
@@ -367,7 +368,7 @@ export class UserManagements extends Component {
 
                 </Col>
             </Row>
-        </Container>;
+        </Container >;
     }
 }
 export default UserManagements

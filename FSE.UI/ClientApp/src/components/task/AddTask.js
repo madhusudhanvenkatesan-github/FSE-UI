@@ -8,7 +8,7 @@ import { PRJCT_SERVICE_URL } from '../constants';
 import UserSearchModal from '../user/UserSearchModal';
 import ProjectSearchModal from '../project/ProjectSearchModel';
 import TaskSearchModal from './TaskSearchModal';
-export class AddTask extends Component{
+export class AddTask extends Component {
     static displayName = AddTask.name;
     state = {
         projectId: '',
@@ -26,7 +26,7 @@ export class AddTask extends Component{
         IsSetDates: false
     }
     componentDidMount() {
-        
+
     }
     handleCheckboxChange = e => {
         if (e.target.checked) {
@@ -174,16 +174,16 @@ export class AddTask extends Component{
                             <Col style={{ minWidth: '125px' }}>
                                 <Label for="projectId">Project</Label>
                             </Col>
-                            <Col style={{ minWidth:'300px' }}>
-                                
+                            <Col style={{ minWidth: '300px' }}>
+
                                 <Input type="text" name="projectId" onChange={this.onChange} value={this.state.projectId}
-                                        disabled={true} />
-                               
+                                    disabled={true} />
+
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                                <ProjectSearchModal onSelect={this.onProjectSelect}/>
+                                <ProjectSearchModal onSelect={this.onProjectSelect} />
                             </Col>
-                            <Col/>
+                            <Col />
                         </Row>
                     </FormGroup>
                     <FormGroup>
@@ -195,7 +195,7 @@ export class AddTask extends Component{
                                 <Input type="text" name="taskDescription" onChange={this.onChange}
                                     value={this.state.taskDescription} />
                             </Col>
-                            <Col style={{ minWidth: '300px' }}/>
+                            <Col style={{ minWidth: '300px' }} />
                             <Col />
                         </Row>
                     </FormGroup>
@@ -203,7 +203,7 @@ export class AddTask extends Component{
                         <Row>
                             <Col ></Col>
                             <Col style={{
-                                minWidth: '200px'
+                                minWidth: '300px'
                             }}>
 
                                 <Input name="IsSetDates"
@@ -236,10 +236,10 @@ export class AddTask extends Component{
                                     reversed={false}
                                 />
                             </Col>
-                            <Col style={{ minWidth: '300px' }}/>
-                                <Col />
+                            <Col style={{ minWidth: '300px' }} />
+                            <Col />
                         </Row>
-                        
+
                     </FormGroup>
                     <FormGroup>
                         <Row>
@@ -254,7 +254,7 @@ export class AddTask extends Component{
                                 <TaskSearchModal onSelect={this.onParentTaskSelect}
                                     onGetParam={this.onPrjParam} />
                             </Col>
-                            <Col/>
+                            <Col />
                         </Row>
                     </FormGroup>
 
@@ -301,7 +301,7 @@ export class AddTask extends Component{
                             <Col style={{ minWidth: '300px' }} >
                                 <UserSearchModal onSelect={this.onTaskOwnerSelect} />
                             </Col>
-                            <Col/>
+                            <Col />
                         </Row>
 
                     </FormGroup>
@@ -317,7 +317,7 @@ export class AddTask extends Component{
                                 color="secondary"
                                 style={{ minWidth: "200px" }} onClick={() => this.onClearForm()}>Clear</Button>
                             </Col>
-                            <Col/>
+                            <Col />
                         </Row>
                     </FormGroup>
                 </Form>

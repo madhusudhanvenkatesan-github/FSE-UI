@@ -314,7 +314,7 @@ export class ProjectManagement extends Component {
                 <Form onSubmit={this.formsubmitHandler} >
                     <FormGroup>
                         <Row>
-                            <Col style={{ minWidth: '10%' }}>
+                            <Col style={{ minWidth: '15%' }}>
                                 <Label for="projectTitle">Project Title</Label>
                             </Col>
                             <Col>
@@ -331,7 +331,7 @@ export class ProjectManagement extends Component {
                         <Row>
                             <Col ></Col>
                             <Col style={{
-                                minWidth: '200px'
+                                minWidth: '300px'
                             }}>
 
                                 <Input name="IsSetDates"
@@ -345,7 +345,7 @@ export class ProjectManagement extends Component {
                             </Col>
 
                             <Col style={{
-                                minWidth: '105px'
+                                minWidth: '115px'
                             }}>
                                 <Label for="startDate">Start Date:</Label>
                             </Col>
