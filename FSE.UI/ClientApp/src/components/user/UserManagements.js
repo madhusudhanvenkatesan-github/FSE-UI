@@ -35,7 +35,7 @@ export class UserManagements extends Component {
     }
     populatePropForEdit = userId => {
         var userEdit = this.state.userItms.find(item => item.id.trim() === userId);
-       // alert(userEdit.id);
+
         this.setState({
             IsMod: true, userId: userEdit.id, employeeId: userEdit.employeeId,
             firstName: userEdit.firstName, lastName: userEdit.lastName, buttonText: 'Modify'
@@ -58,7 +58,6 @@ export class UserManagements extends Component {
             .then(response => {
                 console.log("*****Get Any criteria*******");
                 console.log(response.status);
-                //console.log(res.json());
                 console.log("******Get Any criteria******");
                 return response.json();
             })
@@ -87,9 +86,7 @@ export class UserManagements extends Component {
             .then(response => {
                 console.log("*****Get Any criteria*******");
                 console.log(response.status);
-                //console.log(res.json());
                 console.log("******Get Any criteria******");
-                //return response.json();
             })
             .then(jsn => this.getUsers())
             .catch(err => {
@@ -107,7 +104,6 @@ export class UserManagements extends Component {
                 .then(res => {
                     console.log("******************");
                     console.log(res.status);
-                    //console.log(res.json());
                     console.log("******************");
                     this.getUsers();
 
@@ -167,7 +163,7 @@ export class UserManagements extends Component {
         this.setState({ srchEMpId: '', srchfName: '', srchlName: '' });
         this.getUsers();
     }
-    
+
     sortGrid = (sortAttribute) => {
         if (sortAttribute === 'eid') {
             this.setState({
@@ -207,7 +203,7 @@ export class UserManagements extends Component {
         }
 
     }
-    
+
     render() {
         const gridItems = this.state.userItms;
         return <Container>
@@ -216,7 +212,7 @@ export class UserManagements extends Component {
                     <Form onSubmit={this.formubmitHandler}>
                         <FormGroup>
                             <Row>
-                                <Col style={{ minWidth:'80px' }}>
+                                <Col style={{ minWidth: '80px' }}>
                                     <Label for="employeeId">EmployeeId :</Label>
                                 </Col>
                                 <Col style={{ minWidth: '350px' }}>
@@ -232,12 +228,12 @@ export class UserManagements extends Component {
                             <Row>
                                 <Col style={{ minWidth: '80px' }}>
                                     <Label for="employeeId">First Name :</Label>
-                                    
+
                                 </Col>
                                 <Col style={{ minWidth: '350px' }}>
                                     <Input type="text" name="firstName" onChange={this.onChange} value={this.state.firstName}
                                     />
-                                 </Col>
+                                </Col>
                                 <Col />
                                 <Col />
                                 <Col />
@@ -247,7 +243,7 @@ export class UserManagements extends Component {
                             <Row>
                                 <Col style={{ minWidth: '80px' }}>
                                     <Label for="employeeId">Last Name :</Label>
-                                    
+
                                 </Col>
                                 <Col style={{ minWidth: '350px' }}>
                                     <Input type="text" name="lastName" onChange={this.onChange} value={this.state.lastName}
@@ -260,20 +256,20 @@ export class UserManagements extends Component {
                                 <Col />
                             </Row>
                             <Row>
-                            <Col/>
+                                <Col />
                                 <Col>
                                     <Button
-                                        color="secondary"
+                                        color="primary"
 
                                         style={{ minWidth: "100px" }}>{this.state.buttonText}</Button>
                                 </Col>
                                 <Col>
                                     <Button
-                                        color="secondary"
+                                        color="primary"
                                         onClick={() => this.clearForm}
                                         style={{ minWidth: "100px" }}>Clear</Button>
                                 </Col>
-                                
+
                                 <Col />
                                 <Col />
                                 <Col />
@@ -285,38 +281,38 @@ export class UserManagements extends Component {
             </Row>
             <Row><Col ><hr style={{
                 margin: 'auto 10px',
-                border: '1.5px solid rgb(150, 150, 150)'
+                border: '0px solid rgb(150, 150, 150)'
             }} /><br /></Col></Row>
             <Row>
                 <Col>
                     <Form onSubmit={this.searchUser}>
                         <FormGroup>
                             <Row>
-                            <Col>
-                                <Label for="srchEMpId">EmployeeId :</Label>
-                                <Input type="text" name="srchEMpId" onChange={this.onChange} value={this.state.srchEMpId}
-                                />
-                            </Col>
-                            <Col>
-                                <Label for="srchlName">Last Name :</Label>
-                                <Input type="text" name="srchlName" onChange={this.onChange} value={this.state.srchlName} />
-                            </Col>
-                            <Col>
-                                <Label for="srchfName">First Name :</Label>
-                                <Input type="text" name="srchfName" onChange={this.onChange} value={this.state.srchfName} />
-                            </Col>
+                                <Col>
+                                    <Label for="srchEMpId">EmployeeId :</Label>
+                                    <Input type="text" name="srchEMpId" onChange={this.onChange} value={this.state.srchEMpId}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Label for="srchlName">Last Name :</Label>
+                                    <Input type="text" name="srchlName" onChange={this.onChange} value={this.state.srchlName} />
+                                </Col>
+                                <Col>
+                                    <Label for="srchfName">First Name :</Label>
+                                    <Input type="text" name="srchfName" onChange={this.onChange} value={this.state.srchfName} />
+                                </Col>
                                 <Col>
                                     <br />
-                                   
 
-                                <Button
-                                        color="secondary"
+
+                                    <Button
+                                        color="primary"
                                         style={{ minWidth: "50px", alignSelf: 'down', top: '95%' }}
                                     > Search</Button> <Button
-                                        color="secondary"
+                                        color="primary"
                                         style={{ minWidth: "50px" }}
                                         onClick={() => this.clearCriteria()}>Clear</Button>
-                            </Col>
+                                </Col>
                             </Row>
                         </FormGroup>
                     </Form>
@@ -324,13 +320,14 @@ export class UserManagements extends Component {
             </Row>
             <Row>
                 <Col>
-                    <Label>Sort:</Label>&nbsp;&nbsp;<Button color="secondary"
-                        style={{ minWidth: "50px" }} onClick={() => this.sortGrid('eid')}>EmployeeId</Button>&nbsp;&nbsp;<Button color="secondary"
-                            style={{ minWidth: "50px" }} onClick={() => this.sortGrid('fn')}>First Name</Button>&nbsp;&nbsp;<Button color="secondary"
-                        style={{ minWidth: "50px" }} onClick={() => this.sortGrid('ln')}>Last Name</Button>
+                    <Label>Sort:</Label>&nbsp;&nbsp;<Button color="primary"
+                        style={{ minWidth: "50px" }} onClick={() => this.sortGrid('eid')}>EmployeeId</Button>&nbsp;&nbsp;<Button color="primary"
+                            style={{ minWidth: "50px" }} onClick={() => this.sortGrid('fn')}>First Name</Button>&nbsp;&nbsp;<Button color="primary"
+                                style={{ minWidth: "50px" }} onClick={() => this.sortGrid('ln')}>Last Name</Button>
                 </Col>
-            </Row>
-            <Row>
+
+            </Row><Row>
+
                 <Col>
                     <ListGroup>
                         {
