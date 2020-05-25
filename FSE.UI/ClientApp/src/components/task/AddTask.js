@@ -310,11 +310,11 @@ export class AddTask extends Component {
                             <Col />
                             <Col>
                                 <Button
-                                    color="secondary"
+                                    color="primary"
                                     style={{ minWidth: "200px" }}>Add</Button>
                             </Col>
                             <Col ><Button
-                                color="secondary"
+                                color="primary"
                                 style={{ minWidth: "200px" }} onClick={() => this.onClearForm()}>Clear</Button>
                             </Col>
                             <Col />

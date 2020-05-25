@@ -412,12 +412,12 @@ export class ProjectManagement extends Component {
                         <Row>
                             <Col>
                                 <Button
-                                    color="secondary"
+                                    color="primary"
                                     style={{ minWidth: "200px" }}>{this.state.buttonText}</Button>
                             </Col>
                             <Col>
                                 <Button
-                                    color="secondary"
+                                    color="primary"
                                     onClick={() => this.clearEdit}
                                     style={{ minWidth: "200px" }}>Clear</Button>
                             </Col>
@@ -443,10 +443,10 @@ export class ProjectManagement extends Component {
                             </Col>
                             <Col>
                                 <Button
-                                    color="secondary"
+                                    color="info"
                                     style={{ minWidth: '50px' }}
                                 > Search</Button> <Button
-                                    color="secondary"
+                                    color="primary  "
                                     style={{ minWidth: '50px' }}
                                     onClick={() => this.clearSearchCriteria()}>Clear</Button>
                             </Col>
@@ -456,11 +456,11 @@ export class ProjectManagement extends Component {
             </Row>
             <Row>
                 <Col>
-                    <Label>Sort:</Label>&nbsp;&nbsp;<Button color="secondary"
-                        style={{ minWidth: "50px" }} onClick={() => this.sortGrid('sdt')}>Start Date</Button>&nbsp;&nbsp;<Button color="secondary"
-                            style={{ minWidth: "50px" }} onClick={() => this.sortGrid('edt')}>End date</Button>&nbsp;&nbsp;<Button color="secondary"
+                    <Label>Sort:</Label>&nbsp;&nbsp;<Button color="primary"
+                        style={{ minWidth: "50px" }} onClick={() => this.sortGrid('sdt')}>Start Date</Button>&nbsp;&nbsp;<Button color="primary"
+                            style={{ minWidth: "50px" }} onClick={() => this.sortGrid('edt')}>End date</Button>&nbsp;&nbsp;<Button color="primary"
                                 style={{ minWidth: "50px" }} onClick={() => this.sortGrid('prty')}>Priority</Button>&nbsp;&nbsp;
-                        <Button color="secondary"
+                        <Button color="primary"
                         style={{ minWidth: "50px" }} onClick={() => this.sortGrid('cmpltd')}>Completed</Button>
                 </Col>
             </Row>
