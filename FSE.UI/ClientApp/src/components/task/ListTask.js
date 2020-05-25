@@ -11,8 +11,8 @@ export class ListTask extends Component {
     state = {
         dateTimeMinValue: '0001-01-01',
         tskItems: [],
-        projectId:''
-        
+        projectId: ''
+
     }
     componentDidMount() {
         //alert('Load task list');
@@ -20,11 +20,11 @@ export class ListTask extends Component {
     onProjectSelect = (prjId, prjNm) => {
         this.setState({ projectId: prjId });
         this.getAllTaskForProj(prjId);
-        
+
     }
     getAllTaskForProj = (prjId) => {
         if (prjId !== '') {
-         //   alert('proj id is not empty');
+            //   alert('proj id is not empty');
             fetch(`${PRJCT_SERVICE_URL}/GetAllActiveTask?projId=${prjId}`)
                 .then(res => {
                     console.log("***********************");
@@ -41,7 +41,7 @@ export class ListTask extends Component {
                     if (resjsn != null)
                         this.setState({ tskItems: resjsn })
                     else
-                        this.setState({ tskItems:[]});
+                        this.setState({ tskItems: [] });
                     console.log("***********************");
                 })
                 .catch(err => {
@@ -73,7 +73,7 @@ export class ListTask extends Component {
                     alert(err);
                 });
         }
-        
+
     }
     sortGrid = sortAttribute => {
         if (sortAttribute === 'sdt') {
@@ -118,7 +118,7 @@ export class ListTask extends Component {
     render() {
         const gridItems = this.state.tskItems;
         //var item = this.props.location.state.detail;
-       
+
         return <Container>
             <Row>
                 <Col style={{ minWidth: '125px' }}>
@@ -136,16 +136,16 @@ export class ListTask extends Component {
                     <Label>Sort:</Label>
                 </Col>
                 <Col style={{ minWidth: '40px' }}>
-                    <Button color="secondary"
+                    <Button color="primary"
                         style={{ minWidth: "50px" }} onClick={() => this.sortGrid('sdt')}>
                         Start Date</Button>
                 </Col>
                 <Col style={{ minWidth: '40px' }}>
-                    <Button color="secondary"
+                    <Button color="primary"
                         style={{ minWidth: "50px" }} onClick={() => this.sortGrid('edt')}>End date</Button>
                 </Col>
                 <Col style={{ minWidth: '40px' }}>
-                    <Button color="secondary"
+                    <Button color="primary"
                         style={{ minWidth: "50px" }} onClick={() => this.sortGrid('prty')}>Priority</Button>
                 </Col>
             </Row>
@@ -164,7 +164,7 @@ export class ListTask extends Component {
                                     <div>
                                         <ListGroup.Item  >
                                             <Row>
-                                                <Col style={{ minWidth:'40px' }}>
+                                                <Col style={{ minWidth: '40px' }}>
                                                     <b>Task</b>
                                                     <br />
                                                     {item.taskDescription}
@@ -172,7 +172,7 @@ export class ListTask extends Component {
                                                 <Col style={{ minWidth: '200px', textAlign: "left" }}>
                                                     <b>Parent</b>
                                                     <br />
-                                                        {item.parentDescription}
+                                                    {item.parentDescription}
                                                 </Col>
                                                 <Col style={{ minWidth: '80px', textAlign: 'left' }}>
                                                     <b>Priority</b><br />   {item.priority}
@@ -205,14 +205,14 @@ export class ListTask extends Component {
                                             </Row>
                                             <Row style={{ minHeight: "10px" }}>
 
-                                               
+
                                                 <Col style={{ minWidth: '100px', textAlign: 'left' }}>
-                                                   
+
                                                 </Col>
                                                 <Col style={{ minWidth: '100px', textAlign: 'left' }}>
-                                                    
+
                                                 </Col>
-                                                
+
                                             </Row>
                                         </ListGroup.Item>
 

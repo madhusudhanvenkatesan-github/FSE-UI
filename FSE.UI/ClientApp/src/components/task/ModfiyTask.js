@@ -29,13 +29,14 @@ export class ModifyTask extends Component {
     componentDidMount() {
         var item = this.props.onGetParam();
         if (item != null) {
-            
+
             this.setState({
                 projectId: item.projectId, taskId: item.taskId, taskDescription: item.taskDescription,
                 parentTaskId: item.parentTaskId, parentDescription: item.parentDescription, priority: item.priority,
                 status: item.status, startDate: new Date(item.startDate), endDate: new Date(item.endDate),
-                taskOwnerId: item.taskOwnerId,taskOwnerName: item.taskOwnerName});
-            
+                taskOwnerId: item.taskOwnerId, taskOwnerName: item.taskOwnerName
+            });
+
         }
     }
     handleCheckboxChange = e => {
@@ -158,8 +159,8 @@ export class ModifyTask extends Component {
             });
     }
     render() {
-       //var item = this.props.location.state.detail;
-     
+        //var item = this.props.location.state.detail;
+
         return <Container>
             <Row>
                 <Form onSubmit={this.submitEdit}>
@@ -175,7 +176,7 @@ export class ModifyTask extends Component {
 
                             </Col>
                             <Col style={{ minWidth: '300px' }}>
-                               
+
                             </Col>
                             <Col />
                         </Row>
@@ -304,11 +305,11 @@ export class ModifyTask extends Component {
                             <Col />
                             <Col>
                                 <Button
-                                    color="secondary"
+                                    color="primary"
                                     style={{ minWidth: "200px" }}>Modify</Button>
                             </Col>
                             <Col ><Button
-                                color="secondary"
+                                color="primary"
                                 style={{ minWidth: "200px" }}
                                 onClick={() => this.props.onToggle(null)}>Return</Button>
                             </Col>

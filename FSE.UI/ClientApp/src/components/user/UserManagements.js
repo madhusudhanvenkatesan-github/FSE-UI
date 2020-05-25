@@ -305,7 +305,7 @@ export class UserManagements extends Component {
                                     <br />
 
                                     <Button
-                                        color="primary"
+                                        color="info"
                                         style={{ minWidth: "50px", alignSelf: 'down', top: '95%' }}
                                     > Search</Button> <Button
                                         color="primary"
